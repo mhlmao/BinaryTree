@@ -9,43 +9,53 @@ namespace BinaryTree
         static void Main(string[] args)
         {
             string input;
-            short value;
+            Tree tree;
 
+            //Program starts and request input
             do
             {
                 input = RequestValue();
-                Console.Clear();
+                Console.WriteLine("\n");
             }
-            while (!ValidateInput(input, out value));
+            while (!ValidateInput(input, out tree));//out: by ref without initialization
 
-
-            Node node = new Node { Value = value};
-
-            BinaryTreeManager binaryTreeManager = new BinaryTreeManager();
-            binaryTreeManager.AddNode(new Node());
+            //Once the input is validated and added the values to the tree, it is printed
+            Console.WriteLine("Tree printed in preorder:");
+            tree.Preorder();
+            Console.WriteLine("\n");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
 
         /// <summary>
-        /// Solicita y lee el valor ingresado por el usuario
+        /// Request user input
         /// </summary>
-        /// <returns></returns>
+        /// <returns>User input</returns>
         public static string RequestValue()
         {
-            Console.Write("Por favor ingrese un valor para el nodo: ");
+            Console.Write("Please insert the value(s) to add to the tree:" +
+                "\n\nExample: 78, 45, 24 \nInput:");
             return Console.ReadLine();
         }
 
         /// <summary>
-        /// Valida que el valor ingresado por el usuario sea un número
+        /// Validate the user input
         /// </summary>
-        /// <param name="input">El valor ingresado por el usuario</param>
-        public static bool ValidateInput(string input, out short value)
+        /// <param name="input">User input</param>
+        public static bool ValidateInput(string input, out Tree tree)
         {
-            //Trata de convertir la entrada del usuario en un entero
-            if (!short.TryParse(input, out value))
+            tree = new Tree();
+            string[] inputSplitted =  input.Split(",");
+
+            foreach (string splitted in inputSplitted)
             {
-                Console.WriteLine("El valor ingresado debe ser un número...");
-                return false;
+                //Trata de convertir la entrada del usuario en un entero
+                if (!short.TryParse(splitted, out short splitShort))
+                {
+                    Console.WriteLine("The input isn't in a correct format");
+                    return false;
+                }
+                tree.Add(splitShort);
             }
             return true;
         }

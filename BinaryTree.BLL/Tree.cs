@@ -39,13 +39,13 @@ namespace BinaryTree.BLL
         }
 
         /// <summary>
-        /// Traverse the Tree to print him.
+        /// Traverse the Tree to print it.
         /// First the root, then the lef node and finally, the right node.
         /// </summary>
         public void Preorder()
-        {
-            if(_value != 0)
-            {
+        {   
+            if (_value != 0)
+            {   
                 Console.Write("{0} ",_value);
                 if (_left != null)
                     _left.Preorder();
