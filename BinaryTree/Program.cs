@@ -43,7 +43,7 @@ namespace BinaryTree
             catch(FormatException e)
             {
                 Console.Clear();
-                Console.WriteLine("The application thrown the next error...\n\n {0} \n\nplease fix it and try again.", e);
+                Console.WriteLine("The application thrown the next error...\n\n{0} \n\nplease fix it and try again.", e.Message);
             }
 
             Console.WriteLine("\n");
