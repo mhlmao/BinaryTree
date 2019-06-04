@@ -3,5 +3,6 @@ Basic console application. It Allows to create a binary tree and to get the lowe
 ## Get started
 - Clone or download the repository
 - Open it with visual studio
-- Launch the console project
+- Launch the WebAPI instance 
+- Launch the console application instance
 - Follow the instructions of the application
