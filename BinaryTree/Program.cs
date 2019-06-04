@@ -1,7 +1,6 @@
 ﻿using System;
-using BinaryTree.Entities;
-using BinaryTree.BLL;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BinaryTree
 {
@@ -12,6 +11,12 @@ namespace BinaryTree
             BLL.Tree tree;
             //Program starts and request input
             tree = RequestInput();
+
+            ServiceConector sc = new ServiceConector();
+            //sc.Request();
+
+            var jsonTree = JsonConvert.SerializeObject(tree);
+            sc.Post(jsonTree);
 
             //Once the input is validated and added the values to the tree, it is printed
             List<int> preorderTree = new List<int>();

@@ -6,8 +6,8 @@ namespace BinaryTree.BLL
 {
     public class Tree
     {
-        private int _value;
-        private Tree _left, _right, _ancestor;
+        public int Value;
+        public Tree Left, Right, Ancestor;
 
         /// <summary>
         /// Add the new value to the tree
@@ -15,29 +15,29 @@ namespace BinaryTree.BLL
         /// <param name="value"></param>
         public void Add(int value, int ancestor = 0)
         {
-            if(_ancestor == null)
+            if(Ancestor == null)
             {
-                _ancestor = new Tree();
-                _ancestor._value = ancestor;
+                Ancestor = new Tree();
+                Ancestor.Value = ancestor;
             }
 
-            if (_value == 0)
+            if (Value == 0)
             {
-                _value = value;
+                Value = value;
             }
             else
             {
-                if (value < _value)
+                if (value < Value)
                 {
-                    if (_left == null)
-                        _left = new Tree();
-                    _left.Add(value,_value);
+                    if (Left == null)
+                        Left = new Tree();
+                    Left.Add(value,Value);
                 }
-                else if(value > _value)
+                else if(value > Value)
                 {
-                    if (_right == null)
-                        _right = new Tree();
-                    _right.Add(value,_value);
+                    if (Right == null)
+                        Right = new Tree();
+                    Right.Add(value,Value);
                 }
             }
         }
@@ -48,14 +48,14 @@ namespace BinaryTree.BLL
         /// </summary>
         public void Preorder(ref List<int> Tree)
         {   
-            if (_value != 0)
+            if (Value != 0)
             {   
-                Tree.Add(_value);
+                Tree.Add(Value);
 
-                if (_left != null)
-                    _left.Preorder(ref Tree);
-                if (_right != null)
-                    _right.Preorder(ref Tree);
+                if (Left != null)
+                    Left.Preorder(ref Tree);
+                if (Right != null)
+                    Right.Preorder(ref Tree);
             }
         }
 
@@ -67,19 +67,19 @@ namespace BinaryTree.BLL
         /// <returns></returns>
         public bool Exist(int value)
         {
-            if(_value != 0)
+            if(Value != 0)
             {
-                if (value == _value)
+                if (value == Value)
                 {
                     return true;
                 }
-                else if (_left != null && value < _value)
+                else if (Left != null && value < Value)
                 {
-                    return _left.Exist(value);
+                    return Left.Exist(value);
                 }
-                else if (_right != null && value > _value)
+                else if (Right != null && value > Value)
                 {
-                    return _right.Exist(value);
+                    return Right.Exist(value);
                 }
                 else
                 {
@@ -100,15 +100,15 @@ namespace BinaryTree.BLL
         public void GetAncestor(int value, ref List<int> ancestors)
         {
             
-            ancestors.Add(_ancestor._value);
+            ancestors.Add(Ancestor.Value);
 
-            if (_left != null && value < _value)
+            if (Left != null && value < Value)
             {
-                _left.GetAncestor(value, ref ancestors);
+                Left.GetAncestor(value, ref ancestors);
             }
-            else if (_right != null && value > _value)
+            else if (Right != null && value > Value)
             {
-                _right.GetAncestor(value, ref ancestors);
+                Right.GetAncestor(value, ref ancestors);
             }
         }
 
