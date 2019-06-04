@@ -39,10 +39,6 @@ namespace BinaryTree.BLL
                         _right = new Tree();
                     _right.Add(value,_value);
                 }
-                else
-                {
-                    //TODO: When equals
-                }
             }
         }
 
@@ -50,18 +46,25 @@ namespace BinaryTree.BLL
         /// Traverse the Tree to print it.
         /// First the root, then the lef node and finally, the right node.
         /// </summary>
-        public void Preorder()
+        public void Preorder(ref List<int> Tree)
         {   
             if (_value != 0)
             {   
-                Console.Write("{0} ",_value);
+                Tree.Add(_value);
+
                 if (_left != null)
-                    _left.Preorder();
+                    _left.Preorder(ref Tree);
                 if (_right != null)
-                    _right.Preorder();
+                    _right.Preorder(ref Tree);
             }
         }
 
+
+        /// <summary>
+        /// Validates whether a value exist in the Tree
+        /// </summary>
+        /// <param name="value">Value to validate whether exist</param>
+        /// <returns></returns>
         public bool Exist(int value)
         {
             if(_value != 0)
@@ -89,6 +92,11 @@ namespace BinaryTree.BLL
             }
         }
 
+        /// <summary>
+        /// Gets all ancestors of a node
+        /// </summary>
+        /// <param name="value">value to get its ancestor</param>
+        /// <param name="ancestors">List by ref to save the ancestors</param>
         public void GetAncestor(int value, ref List<int> ancestors)
         {
             
@@ -104,8 +112,14 @@ namespace BinaryTree.BLL
             }
         }
 
+        /// <summary>
+        /// Gets the lowest common ancestor for two nodes in a tree
+        /// </summary>
+        /// <param name="node1"></param>
+        /// <param name="node2"></param>
+        /// <returns></returns>
         public int CommonAncestor(int node1, int node2)
-        {
+            {
             List<int> listAncestors1 = new List<int>();
             List<int> listAncestors2 = new List<int>();
             IEnumerable<int> commonList = new List<int>();
