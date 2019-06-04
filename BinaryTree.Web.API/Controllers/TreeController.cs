@@ -20,16 +20,18 @@ namespace BinaryTree.Web.API.Controllers
             this.context = context;
         }
 
-        //[HttpGet]
-        //public IEnumerable<Tree> Get()
-        //{
-        //    return context.Tree.ToList();
-        //}
+        [HttpGet]
+        public IEnumerable<Tree> Get()
+        {
+            return context.Tree.ToList();
+        }
 
         [HttpPost]
         public IActionResult Post([FromBody] Tree tree)
         {
-            return Ok();
+            context.Tree.Add(tree);
+            context.SaveChanges();
+            return Ok(context.Tree);
         }
     }
 }

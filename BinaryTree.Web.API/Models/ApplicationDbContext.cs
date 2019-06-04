@@ -14,6 +14,6 @@ namespace BinaryTree.Web.API.Models
         {
 
         }
-        //public DbSet<Tree> Tree { get; set; }
+        public DbSet<Tree> Tree { get; set; }
     }
 }
