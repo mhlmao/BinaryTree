@@ -22,6 +22,9 @@ namespace BinaryTree
             //Once the input is validated and added the values to the tree, it is printed
             Console.WriteLine("Tree printed in preorder:");
             tree.Preorder();
+            Console.WriteLine(tree.CommonAncestor(40, 78));
+            Console.WriteLine(tree.CommonAncestor(51, 37));
+            Console.WriteLine(tree.CommonAncestor(76, 85));
             Console.WriteLine("\n");
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
