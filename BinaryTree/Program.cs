@@ -28,11 +28,13 @@ namespace BinaryTree
             //Request two values in the tree
             Console.Write("\n\nType two values in the tree to get its lowest common ancestor...\n" +
                 "Value 1: ");
-            int value1 = Convert.ToInt16(Console.ReadLine());
-            Console.Write("Value 2: ");
-            int value2 = Convert.ToInt16(Console.ReadLine());
+            
             try
             {
+                int value1 = Convert.ToInt16(Console.ReadLine());
+                Console.Write("Value 2: ");
+                int value2 = Convert.ToInt16(Console.ReadLine());
+                
                 var commonAncestor = tree.CommonAncestor(
                     value1,
                     value2);
